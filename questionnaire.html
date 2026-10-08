@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Questionnaire académique sur le prix accepté de l'abonnement Basic-Fit Comfort.">
+<title>Enquête prix accepté — Basic-Fit Comfort</title>
+<link rel="stylesheet" href="questionnaire.css">
+</head>
+<body>
+<header class="q-topbar">
+  <a class="q-brand" href="index.html">BASIC-FIT <span>× M1 MARKETING</span></a>
+  <div class="q-meta">Étude académique · IAE Clermont Auvergne</div>
+</header>
+
+<main class="q-shell">
+  <div class="q-progress-wrap" aria-label="Progression du questionnaire">
+    <div class="q-progress-head"><span id="progressLabel">Étape 1 sur 6</span><span id="progressPct">16%</span></div>
+    <div class="q-progress"><i id="progressBar" style="width:16%"></i></div>
+  </div>
+
+  <section class="q-panel is-active" data-step="1">
+    <div class="q-kicker">Avant de commencer</div>
+    <h1>Sport, budget et abonnement fitness</h1>
+    <p class="q-lead">Cette étude est réalisée dans le cadre du M1 Marketing-Vente de l’IAE Clermont Auvergne. Elle porte sur la manière dont les 18–30 ans évaluent le prix d’un abonnement de fitness.</p>
+    <div class="q-privacy"><strong>Questionnaire anonyme.</strong> Nous ne demandons ni nom, ni adresse e-mail. Les réponses sont utilisées uniquement pour l’analyse académique du projet.</div>
+
+    <div class="q-field">
+      <label for="age">Quel est votre âge ?</label>
+      <input type="number" id="age" min="18" max="30" inputmode="numeric" placeholder="Ex. 21">
+      <p class="q-help">L’étude cible les 18–30 ans.</p>
+    </div>
+
+    <fieldset class="q-field">
+      <legend>Résidez-vous, étudiez-vous ou travaillez-vous dans l’agglomération clermontoise ?</legend>
+      <div class="q-choice-grid two">
+        <label class="q-choice"><input type="radio" name="location" value="oui"><span>Oui</span></label>
+        <label class="q-choice"><input type="radio" name="location" value="non"><span>Non</span></label>
+      </div>
+    </fieldset>
+
+    <label class="q-consent"><input type="checkbox" id="consent"><span>J’accepte de participer à cette étude académique et que mes réponses anonymes soient enregistrées pour l’analyse du projet.</span></label>
+
+    <div class="q-actions"><button class="q-primary" data-next="1">Commencer <span>→</span></button></div>
+    <p class="q-error" id="error1"></p>
+  </section>
+
+  <section class="q-panel" data-step="2">
+    <div class="q-kicker">Votre version de l’offre</div>
+    <h2>Découvrez Basic-Fit Comfort</h2>
+    <p class="q-lead">Regardez l’offre comme si vous envisagiez réellement de vous abonner. Vous verrez une seule version, attribuée aléatoirement.</p>
+
+    <div class="q-offer">
+      <div class="q-offer-head"><span>Basic-Fit</span><b>Comfort</b></div>
+      <div class="q-price"><strong id="displayPrice">—</strong><span>/ 4 semaines</span></div>
+      <div class="q-offer-grid">
+        <div><span>Inscription</span><strong>19,99 €</strong></div>
+        <div><span>Engagement</span><strong>52 semaines</strong></div>
+        <div><span>Réseau</span><strong>Accès multi-clubs</strong></div>
+        <div><span>Application</span><strong>Programmes inclus</strong></div>
+      </div>
+    </div>
+
+    <fieldset class="q-field">
+      <legend>Quelle est la probabilité que vous souscriviez à cette offre dans les 6 prochains mois ?</legend>
+      <div class="q-scale" data-scale="intent1">
+        <label><input type="radio" name="intent1" value="1"><span><b>1</b>Très improbable</span></label>
+        <label><input type="radio" name="intent1" value="2"><span><b>2</b>Improbable</span></label>
+        <label><input type="radio" name="intent1" value="3"><span><b>3</b>Neutre</span></label>
+        <label><input type="radio" name="intent1" value="4"><span><b>4</b>Probable</span></label>
+        <label><input type="radio" name="intent1" value="5"><span><b>5</b>Très probable</span></label>
+      </div>
+    </fieldset>
+    <div class="q-actions"><button class="q-secondary" data-back="2">← Retour</button><button class="q-primary" data-next="2">Continuer →</button></div>
+    <p class="q-error" id="error2"></p>
+  </section>
+
+  <section class="q-panel" data-step="3">
+    <div class="q-kicker">Sensibilité au prix</div>
+    <h2>Et si le tarif changeait ?</h2>
+    <div class="q-branch-card">
+      <span class="q-branch-label">Second scénario</span>
+      <p id="branchQuestion">—</p>
+      <div class="q-branch-price" id="branchPrice">—</div>
+    </div>
+
+    <fieldset class="q-field">
+      <legend>Quelle serait votre intention de souscrire à ce nouveau tarif ?</legend>
+      <div class="q-scale">
+        <label><input type="radio" name="intent2" value="1"><span><b>1</b>Très improbable</span></label>
+        <label><input type="radio" name="intent2" value="2"><span><b>2</b>Improbable</span></label>
+        <label><input type="radio" name="intent2" value="3"><span><b>3</b>Neutre</span></label>
+        <label><input type="radio" name="intent2" value="4"><span><b>4</b>Probable</span></label>
+        <label><input type="radio" name="intent2" value="5"><span><b>5</b>Très probable</span></label>
+      </div>
+    </fieldset>
+    <div class="q-actions"><button class="q-secondary" data-back="3">← Retour</button><button class="q-primary" data-next="3">Continuer →</button></div>
+    <p class="q-error" id="error3"></p>
+  </section>
+
+  <section class="q-panel" data-step="4">
+    <div class="q-kicker">Prix psychologique</div>
+    <h2>Vos quatre seuils de prix</h2>
+    <p class="q-lead">Répondez en euros pour une période de 4 semaines. Les quatre montants doivent progresser du plus bas au plus élevé.</p>
+
+    <div class="q-vw-grid">
+      <label class="q-vw-card"><span class="q-vw-num">01</span><strong>Trop bon marché</strong><p>À partir de quel prix l’offre vous semblerait si peu chère que vous douteriez de sa qualité ?</p><div class="q-money"><input id="pTooCheap" type="number" min="1" max="100" step="0.01" placeholder="0,00"><span>€</span></div></label>
+      <label class="q-vw-card"><span class="q-vw-num">02</span><strong>Bonne affaire</strong><p>À quel prix considéreriez-vous que l’offre représente une bonne affaire ?</p><div class="q-money"><input id="pCheap" type="number" min="1" max="100" step="0.01" placeholder="0,00"><span>€</span></div></label>
+      <label class="q-vw-card"><span class="q-vw-num">03</span><strong>Cher mais acceptable</strong><p>À partir de quel prix l’offre commencerait-elle à vous sembler chère, tout en restant envisageable ?</p><div class="q-money"><input id="pExpensive" type="number" min="1" max="100" step="0.01" placeholder="0,00"><span>€</span></div></label>
+      <label class="q-vw-card"><span class="q-vw-num">04</span><strong>Trop cher</strong><p>À partir de quel prix refuseriez-vous l’offre parce qu’elle devient trop chère ?</p><div class="q-money"><input id="pTooExpensive" type="number" min="1" max="100" step="0.01" placeholder="0,00"><span>€</span></div></label>
+    </div>
+    <div class="q-actions"><button class="q-secondary" data-back="4">← Retour</button><button class="q-primary" data-next="4">Continuer →</button></div>
+    <p class="q-error" id="error4"></p>
+  </section>
+
+  <section class="q-panel" data-step="5">
+    <div class="q-kicker">Contrôle & perception</div>
+    <h2>Quelques dernières questions</h2>
+
+    <fieldset class="q-field">
+      <legend>Quel était le prix affiché dans la première offre que vous avez vue ?</legend>
+      <div class="q-choice-grid">
+        <label class="q-choice"><input type="radio" name="controlPrice" value="19.99"><span>19,99 €</span></label>
+        <label class="q-choice"><input type="radio" name="controlPrice" value="24.99"><span>24,99 €</span></label>
+        <label class="q-choice"><input type="radio" name="controlPrice" value="27.99"><span>27,99 €</span></label>
+        <label class="q-choice"><input type="radio" name="controlPrice" value="29.99"><span>29,99 €</span></label>
+        <label class="q-choice wide"><input type="radio" name="controlPrice" value="inconnu"><span>Je ne m’en rappelle plus</span></label>
+      </div>
+    </fieldset>
+
+    <fieldset class="q-field" id="reasonReject">
+      <legend>Quelle est la raison principale de votre réticence face à ce tarif ?</legend>
+      <div class="q-choice-stack">
+        <label class="q-choice"><input type="radio" name="reason" value="substituts"><span>Je préfère des alternatives gratuites ou très peu chères (sport universitaire, running, entraînement chez soi…)</span></label>
+        <label class="q-choice"><input type="radio" name="reason" value="concurrence"><span>À ce prix, d’autres salles me paraissent offrir davantage de valeur</span></label>
+        <label class="q-choice"><input type="radio" name="reason" value="budget"><span>Ce prix dépasse le budget que je souhaite consacrer au fitness</span></label>
+      </div>
+    </fieldset>
+
+    <fieldset class="q-field" id="reasonAccept">
+      <legend>Qu’est-ce qui justifie le plus la valeur de cette offre selon vous ?</legend>
+      <div class="q-choice-stack">
+        <label class="q-choice"><input type="radio" name="reason" value="reseau"><span>Le réseau de clubs et la facilité d’accès</span></label>
+        <label class="q-choice"><input type="radio" name="reason" value="prix"><span>Le rapport entre le prix et les services proposés</span></label>
+        <label class="q-choice"><input type="radio" name="reason" value="equipement"><span>Les équipements de musculation et de cardio</span></label>
+      </div>
+    </fieldset>
+
+    <div class="q-likert-card">
+      <p class="q-likert-title">Dans quelle mesure êtes-vous d’accord avec ces affirmations ?</p>
+      <div class="q-likert-row"><span>Cette offre me paraît offrir un bon rapport qualité-prix.</span><select id="valuePerceived"><option value="">—</option><option value="1">1 · Pas du tout</option><option value="2">2</option><option value="3">3 · Neutre</option><option value="4">4</option><option value="5">5 · Tout à fait</option></select></div>
+      <div class="q-likert-row"><span>Cette offre me paraît de bonne qualité.</span><select id="qualityPerceived"><option value="">—</option><option value="1">1 · Pas du tout</option><option value="2">2</option><option value="3">3 · Neutre</option><option value="4">4</option><option value="5">5 · Tout à fait</option></select></div>
+      <div class="q-likert-row"><span>Je pourrais faire confiance à cette offre.</span><select id="trustPerceived"><option value="">—</option><option value="1">1 · Pas du tout</option><option value="2">2</option><option value="3">3 · Neutre</option><option value="4">4</option><option value="5">5 · Tout à fait</option></select></div>
+    </div>
+
+    <div class="q-actions"><button class="q-secondary" data-back="5">← Retour</button><button class="q-primary" data-next="5">Continuer →</button></div>
+    <p class="q-error" id="error5"></p>
+  </section>
+
+  <section class="q-panel" data-step="6">
+    <div class="q-kicker">Votre profil</div>
+    <h2>Dernière étape</h2>
+    <p class="q-lead">Ces informations servent uniquement à décrire l’échantillon et à vérifier que les groupes A et B sont comparables.</p>
+
+    <fieldset class="q-field">
+      <legend>Vous êtes principalement :</legend>
+      <div class="q-choice-grid">
+        <label class="q-choice"><input type="radio" name="status" value="Etudiant"><span>Étudiant</span></label>
+        <label class="q-choice"><input type="radio" name="status" value="Jeune actif"><span>Jeune actif</span></label>
+        <label class="q-choice"><input type="radio" name="status" value="Autre"><span>Autre</span></label>
+      </div>
+    </fieldset>
+
+    <div class="q-submit-note"><strong>Envoi anonyme</strong><p>Une ligne sera créée dans notre base de données avec vos réponses et la version A/B affichée. Aucun nom ni e-mail n’est demandé.</p></div>
+
+    <div class="q-actions"><button class="q-secondary" data-back="6">← Retour</button><button class="q-primary" id="submitSurvey">Envoyer mes réponses <span>→</span></button></div>
+    <p class="q-error" id="error6"></p>
+  </section>
+
+  <section class="q-panel q-end" data-step="7">
+    <div class="q-success-icon">✓</div>
+    <div class="q-kicker">Réponse enregistrée</div>
+    <h2>Merci pour votre participation.</h2>
+    <p>Votre réponse a été enregistrée. Elle sera analysée avec l’ensemble de l’échantillon.</p>
+    <a class="q-home" href="index.html">Retour à l’étude de marché</a>
+  </section>
+</main>
+<script src="questionnaire.js"></script>
+</body>
+</html>
