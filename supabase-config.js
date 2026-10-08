@@ -1,0 +1,1 @@
+window.BF_DB = { url: "", key: "" };
