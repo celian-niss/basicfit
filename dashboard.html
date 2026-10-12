@@ -3,98 +3,30 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Dashboard privé des réponses au questionnaire Basic-Fit Comfort.">
-<title>Dashboard réponses — Basic-Fit</title>
+<meta name="description" content="Accès au dashboard Google Sheets de l'étude Basic-Fit Comfort.">
+<title>Dashboard — Basic-Fit</title>
 <link rel="stylesheet" href="dashboard.css">
+<style>
+.sheet-handoff{max-width:760px;margin:80px auto;background:#fff;border:1px solid #deded8;border-radius:26px;padding:44px;box-shadow:0 20px 50px rgba(0,0,0,.06)}
+.sheet-handoff h1{font-size:clamp(2.6rem,6vw,4.8rem);line-height:.95;letter-spacing:-.06em;margin:10px 0 18px}
+.sheet-handoff p{color:#64645f;font-size:1.02rem}
+.sheet-handoff .sheet-link{display:inline-flex;align-items:center;gap:14px;margin-top:20px;background:#171717;color:#fff;text-decoration:none;border-radius:13px;padding:14px 18px;font-weight:850}
+.sheet-handoff .sheet-link:hover{background:#f36f21}
+.sheet-features{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:28px}
+.sheet-features div{background:#f6f6f2;border-radius:14px;padding:15px;font-size:.85rem}
+@media(max-width:700px){.sheet-handoff{margin:30px 12px;padding:28px}.sheet-features{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
-<header class="dash-top">
-  <a href="index.html" class="dash-brand">BASIC-FIT <span>× M1 MARKETING</span></a>
-  <div class="dash-actions">
-    <button id="refreshBtn" class="ghost hidden">Actualiser</button>
-    <button id="logoutBtn" class="ghost hidden">Se déconnecter</button>
-  </div>
-</header>
-
+<header class="dash-top"><a href="index.html" class="dash-brand">BASIC-FIT <span>× M1 MARKETING</span></a></header>
 <main class="dash-shell">
-  <section id="loginView" class="login-card">
-    <p class="eyebrow">Accès privé</p>
-    <h1>Dashboard de l’étude</h1>
-    <p>Connexion réservée à l’adresse autorisée du projet.</p>
-    <form id="loginForm">
-      <label>Adresse e-mail
-        <input id="email" type="email" value="celian.nissen@etu.uca.fr" autocomplete="email" required>
-      </label>
-      <button type="submit" class="primary">Recevoir un lien de connexion</button>
-    </form>
-    <p id="loginMsg" class="status"></p>
-  </section>
-
-  <section id="dashboardView" class="hidden">
-    <div class="dash-head">
-      <div><p class="eyebrow">Résultats en direct</p><h1>Étude du prix accepté</h1><p class="muted">Basic-Fit Comfort · 18–30 ans · Agglomération clermontoise</p></div>
-      <button id="exportBtn" class="primary compact">Exporter CSV</button>
-    </div>
-
-    <div class="kpis">
-      <article><span>Réponses</span><strong id="kpiTotal">0</strong></article>
-      <article><span>Version A</span><strong id="kpiA">0</strong><small>24,99 €</small></article>
-      <article><span>Version B</span><strong id="kpiB">0</strong><small>27,99 €</small></article>
-      <article><span>Contrôle correct</span><strong id="kpiControl">—</strong></article>
-      <article><span>Intention moyenne</span><strong id="kpiIntent">—</strong><small>/ 5</small></article>
-      <article><span>Âge moyen</span><strong id="kpiAge">—</strong></article>
-    </div>
-
-    <div class="compare-grid">
-      <article class="panel">
-        <div class="panel-head"><div><p class="eyebrow">Test A/B</p><h2>Intention de souscription</h2></div><span class="badge">Moyenne / 5</span></div>
-        <div class="ab-bars">
-          <div><div class="ab-label"><span>Version A · 24,99 €</span><b id="meanA">—</b></div><div class="bar"><i id="barA"></i></div></div>
-          <div><div class="ab-label"><span>Version B · 27,99 €</span><b id="meanB">—</b></div><div class="bar"><i id="barB"></i></div></div>
-        </div>
-        <p id="abDelta" class="insight"></p>
-      </article>
-
-      <article class="panel">
-        <div class="panel-head"><div><p class="eyebrow">Perception</p><h2>Valeur · Qualité · Confiance</h2></div></div>
-        <div id="perceptionGrid" class="mini-metrics"></div>
-      </article>
-    </div>
-
-    <div class="compare-grid">
-      <article class="panel">
-        <div class="panel-head"><div><p class="eyebrow">Van Westendorp</p><h2>Seuils moyens déclarés</h2></div></div>
-        <div id="vwList" class="vw-list"></div>
-        <p class="note">Lecture descriptive des réponses collectées, pas encore le tracé complet des courbes cumulées de Van Westendorp.</p>
-      </article>
-
-      <article class="panel">
-        <div class="panel-head"><div><p class="eyebrow">Échantillon</p><h2>Profil des répondants</h2></div></div>
-        <div id="statusList" class="status-list"></div>
-      </article>
-    </div>
-
-    <section class="panel">
-      <div class="panel-head table-head">
-        <div><p class="eyebrow">Données brutes</p><h2>Toutes les réponses</h2></div>
-        <div class="filters">
-          <select id="variantFilter"><option value="">Toutes les versions</option><option value="A">Version A</option><option value="B">Version B</option></select>
-          <select id="statusFilter"><option value="">Tous les profils</option><option value="Etudiant">Étudiant</option><option value="Jeune actif">Jeune actif</option><option value="Autre">Autre</option></select>
-          <input id="searchInput" type="search" placeholder="Rechercher…">
-        </div>
-      </div>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>Date</th><th>Var.</th><th>Prix</th><th>Âge</th><th>Profil</th><th>Intention</th><th>Second prix</th><th>Intention 2</th><th>Trop bas</th><th>Bonne affaire</th><th>Cher</th><th>Trop cher</th><th>Contrôle</th><th>Motif</th></tr></thead>
-          <tbody id="responsesBody"></tbody>
-        </table>
-      </div>
-    </section>
-  </section>
+<section class="sheet-handoff">
+<p class="eyebrow">Résultats · Google Sheets</p>
+<h1>Dashboard de l’étude</h1>
+<p>Les réponses du questionnaire sont désormais centralisées dans un Google Sheet. L’onglet <strong>Dashboard</strong> calcule automatiquement les principaux indicateurs, et l’onglet <strong>Réponses</strong> contient les données brutes.</p>
+<div class="sheet-features"><div><strong>A/B</strong><br>24,99 € vs 27,99 €</div><div><strong>Van Westendorp</strong><br>Seuils moyens</div><div><strong>Échantillon</strong><br>Profil et contrôle</div></div>
+<a class="sheet-link" href="https://docs.google.com/spreadsheets/d/1BJIJhg7hjmxXFrYFNv4LkTyk_G9MkTD5CKOVOOmkRAs/edit" target="_blank" rel="noopener">Ouvrir le Google Sheet →</a>
+</section>
 </main>
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="supabase-config.js"></script>
-<script src="dashboard.js"></script>
 </body>
 </html>
