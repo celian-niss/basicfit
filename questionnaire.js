@@ -97,17 +97,15 @@ async function submit(){
   };
   const btn=$("#submitSurvey");btn.disabled=true;btn.textContent="Enregistrement…";
   try{
-    if(!window.BF_DB?.url||!window.BF_DB?.key) throw new Error("database_not_configured");
-    const res=await fetch(window.BF_DB.url+"/rest/v1/survey_responses",{
+    if(!window.BF_GOOGLE?.scriptUrl) throw new Error("google_script_not_configured");
+    const res=await fetch(window.BF_GOOGLE.scriptUrl,{
       method:"POST",
-      headers:{
-        "Content-Type":"application/json",
-        "apikey":window.BF_DB.key,
-        "Prefer":"return=minimal"
-      },
+      headers:{"Content-Type":"text/plain;charset=utf-8"},
       body:JSON.stringify(payload)
     });
-    if(!res.ok)throw new Error("db_"+res.status);
+    if(!res.ok)throw new Error("google_"+res.status);
+    const out=await res.json();
+    if(!out.ok)throw new Error(out.error||"google_write_failed");
     sessionStorage.removeItem("bf_variant");
     show(7);
   }catch(e){
