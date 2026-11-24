@@ -486,3 +486,75 @@ footer{padding:30px 0;border-top:1px solid var(--line);background:#eae7e1}
   .hero h1{font-size:clamp(2.7rem,13vw,4.8rem)}
   .research-card{margin-top:8px}
 }
+
+
+/* --- Justification du scénario 27,99 € --- */
+.choice-rationale{
+  margin:0 0 28px;
+  padding:24px;
+  border-radius:22px;
+  background:#fff;
+  color:var(--ink);
+  border:1px solid #e4ddd5;
+  box-shadow:var(--shadow)
+}
+.choice-rationale-head{max-width:820px}
+.choice-rationale-head h3{
+  margin:7px 0 8px;
+  font-size:clamp(1.8rem,3.4vw,3rem);
+  line-height:1;
+  letter-spacing:-.045em
+}
+.choice-rationale-head>p:last-child{
+  margin:0;
+  color:#625c56
+}
+.choice-rationale-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:22px
+}
+.choice-rationale-grid article{
+  background:#f7f4ef;
+  border:1px solid #e5dfd7;
+  border-radius:16px;
+  padding:18px
+}
+.choice-rationale-grid article>span{
+  display:block;
+  font-size:.65rem;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:#8b8178
+}
+.choice-rationale-grid article>strong{
+  display:block;
+  margin:8px 0 4px;
+  font-size:2rem;
+  letter-spacing:-.045em
+}
+.choice-rationale-grid article>p{
+  margin:0;
+  font-size:.8rem;
+  color:#625c56
+}
+.choice-rationale-grid .choice-focus{
+  background:var(--orange-soft);
+  border-color:#ffc9aa
+}
+.choice-rationale-grid .choice-focus>strong{color:#b84e10}
+.choice-rationale-note{
+  margin-top:14px;
+  padding:16px 18px;
+  border-left:4px solid var(--orange);
+  background:#181818;
+  color:#fff;
+  border-radius:12px
+}
+.choice-rationale-note strong{display:block;margin-bottom:4px}
+.choice-rationale-note p{margin:0;color:#c9c3be;font-size:.82rem}
+@media(max-width:760px){
+  .choice-rationale-grid{grid-template-columns:1fr}
+}
