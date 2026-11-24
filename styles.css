@@ -404,3 +404,85 @@ footer{padding:30px 0;border-top:1px solid var(--line);background:#eae7e1}
   .scenario-section,.porter-block,.decision-head{background:#fff!important;color:#111!important;border:1px solid #ddd}
   .section-head.inverse>p,.porter-grid p,.dark-source,.decision-head p{color:#555!important}
 }
+
+
+/* --- Decision-led UX additions --- */
+.decision-label{
+  display:inline-block;
+  margin:0 0 8px;
+  padding:7px 10px;
+  border-radius:999px;
+  background:rgba(243,111,33,.14);
+  color:var(--orange);
+  font-size:.68rem;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.12em
+}
+.research-note{
+  margin:14px 0 0;
+  color:#bdb6b0;
+  font-size:.76rem;
+  line-height:1.5
+}
+.journey{
+  grid-template-columns:repeat(5,1fr)
+}
+.simple-math{
+  margin:22px 0 0;
+  display:grid;
+  grid-template-columns:1fr auto auto;
+  gap:9px 12px;
+  align-items:center;
+  padding:18px;
+  border-radius:18px;
+  background:#111;
+  border:1px solid #2c2c2c
+}
+.simple-math span{color:#d5d0cb;font-size:.9rem}
+.simple-math b{color:#777}
+.simple-math strong{color:#fff;font-size:1.05rem}
+.simple-math i{
+  grid-column:1/-1;
+  color:var(--orange);
+  font-style:normal;
+  font-size:.64rem;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  font-weight:900
+}
+.threshold-card{
+  outline:2px solid var(--orange);
+  outline-offset:-2px
+}
+.secondary-drawer{margin-top:24px}
+.secondary-drawer .drawer-content{padding:0 18px 18px}
+.secondary-drawer .drawer-content .subsection-head:first-child{margin-top:18px}
+.scenario-section .risk-block{
+  margin-top:26px;
+  background:#f7f3ee;
+  color:#181818;
+  border:1px solid #e5ded4
+}
+.scenario-section .risk-block .mini,
+.scenario-section .risk-block p{color:#4d4742}
+.scenario-section .risk-table-wrap{background:#fff}
+.scenario-section .profit-caveat{
+  margin-top:18px;
+  background:#fff;
+  color:#181818
+}
+.section-head h2{max-width:18ch}
+.decision-head h2{max-width:16ch}
+@media(max-width:980px){
+  .journey{grid-template-columns:repeat(2,1fr)}
+  .journey a:last-child{grid-column:1/-1}
+}
+@media(max-width:720px){
+  .journey{grid-template-columns:1fr}
+  .journey a:last-child{grid-column:auto}
+  .simple-math{grid-template-columns:1fr auto auto}
+  .simple-math span{font-size:.8rem}
+  .hero h1{font-size:clamp(2.7rem,13vw,4.8rem)}
+  .research-card{margin-top:8px}
+}
