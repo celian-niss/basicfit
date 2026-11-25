@@ -558,3 +558,83 @@ footer{padding:30px 0;border-top:1px solid var(--line);background:#eae7e1}
 @media(max-width:760px){
   .choice-rationale-grid{grid-template-columns:1fr}
 }
+
+
+/* --- Arbitrage économique / commercial --- */
+.arbitrage-grid{
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  gap:14px;
+  align-items:stretch;
+  margin:20px 0 12px
+}
+.arbitrage-card{
+  border-radius:20px;
+  padding:22px;
+  border:1px solid var(--line);
+  background:#f7f5f1
+}
+.arbitrage-card span{
+  display:block;
+  font-size:.66rem;
+  font-weight:900;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:#7d756e
+}
+.arbitrage-card strong{
+  display:block;
+  margin:8px 0 7px;
+  font-size:clamp(1.45rem,3vw,2.25rem);
+  line-height:1.02;
+  letter-spacing:-.045em
+}
+.arbitrage-card p{margin:0;font-size:.76rem;color:#625c56}
+.arbitrage-card.economic{
+  background:#edf7f1;
+  border-color:#c8e4d2
+}
+.arbitrage-card.economic strong{color:#1f6a45}
+.arbitrage-card.commercial{
+  background:#fff3eb;
+  border-color:#f4cfb7
+}
+.arbitrage-card.commercial strong{color:#a94b16}
+.arbitrage-vs{
+  align-self:center;
+  width:42px;height:42px;
+  display:grid;place-items:center;
+  border-radius:50%;
+  background:#181818;
+  color:#fff;
+  font-size:.7rem;
+  font-weight:900
+}
+.arbitrage-answer{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:14px;
+  align-items:start;
+  margin-bottom:18px;
+  padding:18px 20px;
+  border-radius:16px;
+  background:#181818;
+  color:#fff
+}
+.arbitrage-answer span{
+  display:inline-block;
+  padding:5px 8px;
+  border-radius:999px;
+  background:var(--orange);
+  color:#fff;
+  font-size:.63rem;
+  font-weight:900;
+  text-transform:uppercase
+}
+.arbitrage-answer p{margin:0;color:#d6d0ca;font-size:.82rem}
+.arbitrage-answer strong{color:#fff}
+@media(max-width:760px){
+  .arbitrage-grid{grid-template-columns:1fr}
+  .arbitrage-vs{justify-self:center}
+  .arbitrage-answer{grid-template-columns:1fr}
+}
