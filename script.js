@@ -176,7 +176,7 @@ function initChapters(){
   let full=false;
   function targetId(){const id=decodeURIComponent(location.hash.slice(1))||"top";if(id==="recommandation")return "scenario";if(ids.includes(id))return id;const target=document.getElementById(id);return target?.closest("main > section")?.id||"top";}
   function render(){
-    const id=targetId();document.body.classList.toggle("chapter-mode",!full);
+    const id=targetId();document.body.classList.toggle("chapter-mode",!full);document.body.classList.toggle("home-view",!full&&id==="top");
     panels.forEach((p,i)=>{const pid=p.id||"top";p.hidden=!full&&!(pid===id||(id==="scenario"&&pid==="recommandation"));});
     rail.querySelectorAll("[data-chapter]").forEach(a=>{if(a.dataset.chapter===id)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current");});
     all.textContent=full?"Lire par chapitre":"Afficher tout le dossier";
