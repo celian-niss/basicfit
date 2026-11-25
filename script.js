@@ -93,7 +93,7 @@ function drawVanWestendorp(){
     svg.appendChild(line);
   });
 
-  const zone=el("rect",{x:x(20),y:pad.t,width:x(25)-x(20),height:H-pad.t-pad.b,fill:"rgba(243,111,33,.08)"});
+  const zone=el("rect",{x:x(21),y:pad.t,width:x(25.5)-x(21),height:H-pad.t-pad.b,fill:"rgba(243,111,33,.08)"});
   svg.appendChild(zone);
 
   const series=[
@@ -108,9 +108,9 @@ function drawVanWestendorp(){
   });
 
   [
-    {p:20,label:"≈ 20 €",sub:"OPP / PMC"},
-    {p:24,label:"≈ 24 €",sub:"IDP"},
-    {p:25,label:"≈ 25 €",sub:"PME"}
+    {p:21,label:"≈ 21 €",sub:"borne basse"},
+    {p:24,label:"≈ 24 €",sub:"repère"},
+    {p:25.5,label:"≈ 25,5 €",sub:"borne haute"}
   ].forEach((m,i)=>{
     const gx=x(m.p);
     svg.appendChild(el("line",{x1:gx,y1:pad.t,x2:gx,y2:H-pad.b,stroke:"#f36f21","stroke-width":"1.5","stroke-dasharray":"5 5"}));
