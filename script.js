@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     const observer=new IntersectionObserver(entries=>{
       const visible=entries.filter(e=>e.isIntersecting)
         .sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
-      if(!visible)return;
+      if(!visible||document.body.classList.contains("chapter-mode"))return;
       links.forEach(a=>a.classList.toggle("active",a.getAttribute("href")==="#"+(visible.target.id==="recommandation"?"scenario":visible.target.id)));
     },{rootMargin:"-30% 0px -60% 0px",threshold:[0,.15,.4]});
     sections.forEach(s=>observer.observe(s));
@@ -176,14 +176,14 @@ function initChapters(){
   let full=false;
   function targetId(){const id=decodeURIComponent(location.hash.slice(1))||"top";if(id==="recommandation")return "scenario";if(ids.includes(id))return id;const target=document.getElementById(id);return target?.closest("main > section")?.id||"top";}
   function render(){
-    const id=targetId();document.body.classList.toggle("chapter-mode",!full);document.body.classList.toggle("home-view",!full&&id==="top");
+    const id=targetId();document.body.classList.toggle("chapter-mode",!full);document.body.classList.remove("home-view");
     panels.forEach((p,i)=>{const pid=p.id||"top";p.hidden=!full&&!(pid===id||(id==="scenario"&&pid==="recommandation"));});
-    rail.querySelectorAll("[data-chapter]").forEach(a=>{if(a.dataset.chapter===id)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current");});
+    rail.querySelectorAll("[data-chapter]").forEach(a=>{if(a.dataset.chapter===id)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current");});document.querySelectorAll("#mainNav a[href^='#']").forEach(a=>{const active=a.getAttribute("href")==="#"+id;a.classList.toggle("active",active);if(active)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current");});
     all.textContent=full?"Lire par chapitre":"Afficher tout le dossier";
     if(!full){const anchor=location.hash.slice(1);requestAnimationFrame(()=>{if(anchor==="recommandation"||(!ids.includes(anchor)&&anchor)){document.getElementById(anchor)?.scrollIntoView();}else window.scrollTo(0,0);});}
   }
   panels.forEach(p=>{
-    const id=p.id||"top";if(id==="scenario")return;
+    const id=p.id||"top";if(id==="scenario"||id==="top")return;
     const i=ids.indexOf(id==="recommandation"?"scenario":id),wrap=p.querySelector(":scope > .wrap:last-child");if(i<0||!wrap)return;
     const nav=document.createElement("nav");nav.className="chapter-next";nav.setAttribute("aria-label","Navigation entre chapitres");
     if(i>0){const a=document.createElement("a");a.href="#"+ids[i-1];a.textContent="← "+labels[i-1];nav.appendChild(a);}
