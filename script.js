@@ -37,19 +37,20 @@ document.addEventListener("DOMContentLoaded",()=>{
   window.addEventListener("scroll",updateProgress,{passive:true});
   window.addEventListener("resize",updateProgress);
 
-  const sections=["entreprise","marche","mesure","recommandation","sources"]
+  const sections=["entreprise","marche","mesure","scenario","recommandation","sources"]
     .map(id=>document.getElementById(id)).filter(Boolean);
   if("IntersectionObserver" in window && sections.length){
     const observer=new IntersectionObserver(entries=>{
       const visible=entries.filter(e=>e.isIntersecting)
         .sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
       if(!visible)return;
-      links.forEach(a=>a.classList.toggle("active",a.getAttribute("href")==="#"+visible.target.id));
+      links.forEach(a=>a.classList.toggle("active",a.getAttribute("href")==="#"+(visible.target.id==="recommandation"?"scenario":visible.target.id)));
     },{rootMargin:"-30% 0px -60% 0px",threshold:[0,.15,.4]});
     sections.forEach(s=>observer.observe(s));
   }
 
   drawVanWestendorp();
+  initDecisionSimulator();
 });
 
 function drawVanWestendorp(){
@@ -129,4 +130,27 @@ function drawVanWestendorp(){
     const t=el("text",{x:gx+5,y:m.y,fill:"#181818","font-size":"11","font-weight":"800"});
     t.textContent=m.label;svg.appendChild(t);
   });
+}
+
+function initDecisionSimulator(){
+  const ids=["price","drop","cost","budget"];
+  const controls=Object.fromEntries(ids.map(id=>[id,document.getElementById("sim-"+id)]));
+  if(ids.some(id=>!controls[id]))return;
+  const eur=new Intl.NumberFormat("fr-FR",{style:"currency",currency:"EUR"});
+  const pct=new Intl.NumberFormat("fr-FR",{maximumFractionDigits:2});
+  const set=(id,value)=>{const el=document.getElementById("sim-"+id);if(el)el.textContent=value;};
+  function update(){
+    const price=Number(controls.price.value),drop=Number(controls.drop.value),cost=Number(controls.cost.value),budget=Number(controls.budget.value);
+    const base=100*13*(24.99/1.2-cost),capacity=100*13*(price/1.2-cost);
+    const net=capacity*(1-drop/100)-base-budget;
+    const threshold=100*(1-(base+budget)/capacity);
+    set("drop-label",pct.format(drop)+" %");set("cost-label",eur.format(cost));set("budget-label",eur.format(budget));
+    set("net",(net>0?"+":"")+eur.format(net));set("base",eur.format(base));
+    set("threshold",threshold<0?"Aucune (volume en hausse requis)":pct.format(threshold)+" %");
+    const verdict=document.getElementById("sim-verdict");
+    verdict.textContent=net>=0?"Scénario favorable ou à l’équilibre selon ces hypothèses.":"Scénario défavorable : contribution nette inférieure à la référence.";
+    verdict.classList.toggle("sim-positive",net>=0);verdict.classList.toggle("sim-negative",net<0);
+    document.getElementById("sim-net").className=net>=0?"sim-positive":"sim-negative";
+  }
+  ids.forEach(id=>controls[id].addEventListener("input",update));update();
 }
