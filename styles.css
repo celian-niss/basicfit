@@ -757,3 +757,19 @@ body.chapter-mode .hero .journey{grid-template-columns:repeat(4,minmax(0,1fr))!i
 @media(max-width:1350px){body.chapter-mode .hero-grid{gap:24px}body.chapter-mode .hero .journey{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
 @media(max-width:1100px){body.chapter-mode .hero-grid{grid-template-columns:1fr;gap:24px}body.chapter-mode .hero{min-height:0}body.chapter-mode .hero h1{max-width:22ch!important}}
 @media(max-width:680px){body.chapter-mode .hero{padding:28px 0!important}body.chapter-mode .hero>.wrap{width:calc(100% - 28px)}body.chapter-mode .hero h1{font-size:clamp(2.2rem,8vw,3.4rem)!important}body.chapter-mode .hero .research-card{padding:18px}}
+
+/* Contraste explicite des panneaux clairs dans la proposition sombre */
+.scenario-section details.evidence-drawer{background:#f9f7f3;color:#181818;border-color:#dedad2}
+.scenario-section details.evidence-drawer summary,.scenario-section details.evidence-drawer summary span{color:#181818!important}
+.scenario-section details.evidence-drawer summary small{color:#605b55!important}
+.scenario-section details.evidence-drawer summary::marker{color:#873c12}
+.scenario-section .scenario-points>div{color:#fff}
+.scenario-section .scenario-points span{color:#d8d0c9!important}
+.scenario-section .simple-math span{color:#e4ddd7}
+.scenario-section .insight-banner .insight-index{background:#f36f21;color:#181818!important}
+.scenario-section .choice-rationale-grid article{color:#181818}
+.scenario-section .choice-rationale-grid article>span,.scenario-section .choice-rationale-grid article>p{color:#514a43}
+.scenario-section .evidence-drawer .price-path article{color:#fff;background:#24201d}
+.scenario-section .evidence-drawer .price-path article span,.scenario-section .evidence-drawer .price-path article p{color:#ded5ce}
+.scenario-section .evidence-drawer .price-path article strong,.scenario-section .evidence-drawer .price-path article b{color:#fff}
+.scenario-section .evidence-drawer .price-path>i{color:#873c12}
